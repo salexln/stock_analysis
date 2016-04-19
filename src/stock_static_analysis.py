@@ -1,6 +1,6 @@
 import argh
 from argh.decorators import arg
-
+import numpy as np
 
 
 
@@ -21,9 +21,18 @@ def read_file(path):
 			high = float(splitted[2])
 			low = float(splitted[3])
 			avg = (high + low) / 2
-			
-			print high, low, avg
 
+			# stuff for normal distribution:			
+			mu = avg
+			sigma = ((high - avg) + (avg - low)) / 2  #ALEX - is this correct????
+			
+			print high, low, mu, sigma
+
+			s = np.random.normal(mu, sigma)
+			print s
+
+
+			break
 
 
 
