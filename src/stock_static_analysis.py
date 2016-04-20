@@ -39,7 +39,7 @@ def read_file(path):
 				sigma = ( math.pow(high - avg,2) 
 					    + math.pow(avg - low,2) 
 					    + math.pow(val_open - avg, 2) 
-					    + math.pow(val_close - avg, 2)) / 30
+					    + math.pow(val_close - avg, 2)) / 10
 
 				# sigma = 1.5
 			
@@ -54,7 +54,7 @@ def read_file(path):
 				# x = temp / (high - low)
 
 				# if high != low:
-				x = (avg * 1.03 ) #- low) #/ (high - low)
+				x = (avg * 1.02 ) #- low) #/ (high - low)
 
 				print 'low = ', low, ',high = ', high, ',x = ', x, ',mu = ', mu
 				
