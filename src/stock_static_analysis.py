@@ -1,17 +1,17 @@
+import math
+
 import argh
 from argh.decorators import arg
-import numpy as np
-import math
 
 """
 taken from: http://stackoverflow.com/questions/509994/best-way-to-write-a-python-function-that-integrates-a-gaussian
 """
 def make_gauss(N, sigma, mu):
-    k = N / (sigma * math.sqrt(2*math.pi))
-    s = -1.0 / (2 * sigma * sigma)
-    def f(x):
-        return k * math.exp(s * (x - mu)*(x - mu))
-    return f
+	k = N / (sigma * math.sqrt(2*math.pi))
+	s = -1.0 / (2 * sigma * sigma)
+	def f(x):
+		return k * math.exp(s * (x - mu)*(x - mu))
+	return f
 
 def read_file(path):
 	with open(path, 'r') as f:
@@ -39,7 +39,7 @@ def read_file(path):
 				sigma = ( math.pow(high - avg,2) 
 					    + math.pow(avg - low,2) 
 					    + math.pow(val_open - avg, 2) 
-					    + math.pow(val_close, 2)) / 6
+					    + math.pow(val_close - avg, 2)) / 30
 
 				# sigma = 1.5
 			
@@ -59,7 +59,7 @@ def read_file(path):
 				print 'low = ', low, ',high = ', high, ',x = ', x, ',mu = ', mu
 				
 				# make the 
-				print 'prediction = ', f(x)			
+				print 'prediction = ', f(x)
 				print '\n'
 
 			# break
