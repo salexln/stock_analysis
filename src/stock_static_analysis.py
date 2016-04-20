@@ -36,7 +36,7 @@ def read_file(path):
 			# sigma = ((high - avg) + (avg - low)) / 2  #ALEX - is this correct????
 			sigma = 1.5
 			
-			print high, low, mu, sigma
+			
 
 			# s = np.random.normal(mu, sigma)
 
@@ -44,11 +44,14 @@ def read_file(path):
 
 			# find the highest 20%:
 			x = high - (high - low) / 5
+
+			print 'low = ', low, ',high = ', high, ',x = ', x, ',mu = ', mu
 			
 			# make the 
-			print f(x)			
+			print 'prediction = ', f(x)			
+			print '\n'
 
-			break
+			# break
 
 
 
