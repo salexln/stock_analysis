@@ -27,29 +27,40 @@ def read_file(path):
 
 			date = splitted[0]
 			
+			val_open = float(splitted[1])
 			high = float(splitted[2])
 			low = float(splitted[3])
+			val_close = float(splitted[4])
 			avg = (high + low) / 2
 
 			# stuff for normal distribution:			
-			mu = avg
-			# sigma = ((high - avg) + (avg - low)) / 2  #ALEX - is this correct????
-			sigma = 1.5
+			if high != low:
+				mu = avg
+				sigma = ( math.pow(high - avg,2) 
+					    + math.pow(avg - low,2) 
+					    + math.pow(val_open - avg, 2) 
+					    + math.pow(val_close, 2)) / 6
+
+				# sigma = 1.5
 			
 			
 
-			# s = np.random.normal(mu, sigma)
+				# s = np.random.normal(mu, sigma)
 
-			f = make_gauss(2, sigma, mu)
+				f = make_gauss(1, sigma, mu)
 
-			# find the highest 20%:
-			x = high - (high - low) / 5
+				# find the highest 20%:
+				# x = high - (high - low) / 5
+				# x = temp / (high - low)
 
-			print 'low = ', low, ',high = ', high, ',x = ', x, ',mu = ', mu
-			
-			# make the 
-			print 'prediction = ', f(x)			
-			print '\n'
+				# if high != low:
+				x = (avg * 1.03 ) #- low) #/ (high - low)
+
+				print 'low = ', low, ',high = ', high, ',x = ', x, ',mu = ', mu
+				
+				# make the 
+				print 'prediction = ', f(x)			
+				print '\n'
 
 			# break
 
